@@ -16,7 +16,7 @@ Steps to Set Up
 
 Create a custom Docker network to allow communication between the frontend and backend containers:
 
-      cmd:- docker network create my-network
+      docker network create my-network
 
 
 2. Create a .NET Backend Application
@@ -29,8 +29,8 @@ Create a new .NET Web API Project:(use bash or any other)
 
 Build and run the backend container:
 
-    cmd:- docker build -t backend-app .
-    cmd:- docker run -d --name backend --network my-network -p 5227:5227 backend-app
+    docker build -t backend-app .
+    docker run -d --name backend --network my-network -p 5227:5227 backend-app
 
 
 3.NGINX Configuration
@@ -55,7 +55,7 @@ Create an nginx.conf file to proxy requests to the backend:
 
     Run the following command to ensure both containers are running:
 
-    docker ps
+        docker ps
 
     Both frontend and backend containers should be listed.
 
@@ -63,7 +63,7 @@ Create an nginx.conf file to proxy requests to the backend:
 
     Inspect the network to ensure both containers are connected:
 
-    docker network inspect my-network
+        docker network inspect my-network
 
     Both frontend and backend should be listed under the Containers section.
 
@@ -71,7 +71,7 @@ Create an nginx.conf file to proxy requests to the backend:
 
     From within the frontend container, test connectivity to the backend:
 
-    docker exec -it frontend curl http://backend:5227/weatherforecast
+        docker exec -it frontend curl http://backend:5227/weatherforecast
 
     You should receive the correct JSON response.
 
@@ -79,9 +79,9 @@ Create an nginx.conf file to proxy requests to the backend:
 
     Frontend logs:
 
-    docker logs frontend
+        docker logs frontend
 
     Backend logs:
 
-    docker logs backend
+        docker logs backend
 
