@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Frontend</title>
+</head>
+<body>
+    <h1>Welcome to the Frontend!</h1>
+    <p id="response">Fetching data...</p>
+    <script>
+        fetch('/weatherforecast')
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('response').innerText = JSON.stringify(data);
+    })
+    .catch(error => console.error('Error:', error));
+    </script>
+</body>
+</html>
